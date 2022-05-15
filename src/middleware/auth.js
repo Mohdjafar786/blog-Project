@@ -55,7 +55,7 @@ const authorisation = async function (req, res, next) {
     let decodedtoken = jwt.verify(token, "Blog-Project")
     let userloggedin = decodedtoken.authorId
 
-    if (authortobemodified != userloggedin) return res.send({ status: false, msg: "user is not allowed to modify other's blog" })
+    if (authortobemodified != userloggedin) return res.status(403).send({ status: false, msg: "user is not allowed to modify other's blog" })
 
     next()
   }
