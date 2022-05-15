@@ -35,7 +35,7 @@ const authorise = function(req,res,next) {
     let decodedToken=req.decodedToken//syntax need to write in reverse order
     let authorloggedin = decodedToken.authorId
    if(authortobemodified!= authorloggedin ) {
-        return res.status(400).send({status:false, msg:" loggedin person is not allow to create data"})
+        return res.status(403).send({status:false, msg:" loggedin person is not allow to create data"})
     }
     next()
     }
